@@ -104,7 +104,7 @@ Agora, implemente o método `rectsOverlap` considerando:
 - Um retângulo possui uma posição que indica seu canto esquerdo-inferior.
 
 
-### Desafio 1
+### Desafio 1: círculo _vs_ retângulo
 
 Crie um método e o implemente (em `Collision.java`) que verifique se houve
 colisão entre um círculo e um retângulo. Um caso de uso seria a colisão entre
@@ -114,5 +114,23 @@ Para tanto, você deve também alterar `LaserShot.java` para usar esse novo
 método de detecção de colisão. Use a funcionalidade de _debug_ do jogo
 para verificar se está funcionando.
 
+
+### Desafio 2: SAT
+
+Seria legal poder verificar a colisão do `LaserShot` (retangular) contra a
+forma correta de cada `Asteroid`. Podemos usar a técnica de determinação
+de colisão entre objetos convexos chamada _Separating Axis
+Theorem_ já oferecida pela LibGDX em uma classe utilitária chamada
+[`Intersector`][intersector].
+
+Você pode usar a primitiva geométrica [`Polygon`][polygon] da LibGDX e
+criar um método `polygonsOverlap` na `Collision.java`.
+
+Será necessário criar métodos que retornam `Polygon`s na `Asteroid` e na
+`LaserShot`, e alterar suas respectivos implementações de `collidesWith` para
+usar o `polygonsOverlap`.
+
 [vector2]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Vector2.html
 [shape]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ShapeRenderer.html
+[intersector]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Polygon.html
+[intersector]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Intersector.html
